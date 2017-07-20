@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="primary" hideBackButton="true">
+    <ion-title>
+      Configuración del perfil
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+  <ion-item>
+    <ion-label style="white-space:normal">
+      Por favor, introduce tus datos para poder utilizar MouME.
+    </ion-label>
+  </ion-item>
+  <form #f="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Nombre y apellidos</ion-label>
+        <ion-input placeholder="Nombre" id="firstName" type="text" name="firstName" [(ngModel)]="user.firstName" required></ion-input>
+        <ion-input placeholder="Apellidos" id="lastName" type="text" name="lastName" [(ngModel)]="user.lastName" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Nombre de usuario</ion-label>
+        <ion-input placeholder="Visible para usuarios de MouME" id="destination" type="text" name="userName" [(ngModel)]="user.userName" required></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label stacked>Fecha de nacimiento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="user.birthdate" name ="birthdate" required></ion-datetime>
+      </ion-item> 
+      <ion-item>
+        <ion-label stacked>Sexo</ion-label>
+        <ion-select [(ngModel)]="sex" multiple="false" name="sex" cancelText="Cancelar" okText="Aceptar" required>
+          <ion-option value="female">Femenino</ion-option>
+          <ion-option value="male">Masculino</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+  <button (click)="guardarUser()"  [disabled]="!f.valid" ion-button block>
+    Guardar mis datos
+  </button>
+</ion-content>

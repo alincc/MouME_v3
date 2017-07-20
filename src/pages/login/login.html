@@ -1,0 +1,37 @@
+<ion-content padding class="login">
+  <img class="logo" src="img/logo.png">
+
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+    <ion-item>
+      <ion-label stacked>Correo electrónico</ion-label>
+      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
+        placeholder="Tu correo electrónico" [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && (emailChanged || submitAttempt)">
+      <p>Por favor, introduce un correo electrónico válido.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Contraseña</ion-label>
+      <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)"
+        placeholder="Tu contraseña" [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && (passwordChanged || submitAttempt)">
+      <p>Tu password tiene que contener más de 6 carácteres.</p>
+    </ion-item>
+
+    <button ion-button block type="submit">
+      Iniciar sesión
+    </button>
+
+  </form>
+
+  <button ion-button block color="light" (click)="goToSignup()">
+    Crear una cuenta nueva
+  </button>
+
+  <button ion-button block color="light" (click)="goToResetPassword()">
+    He olvidado mi contraseña
+  </button>
+</ion-content>

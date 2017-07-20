@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>
+      Perfil de usuario
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding> 
+  <ion-list>
+    <ion-item>
+      <p>Nombre de usuario</p>
+      <h1 style="white-space:normal;">{{ user.userName }}</h1>
+    </ion-item>
+    <ion-item>
+      <p>Puntuación</p>
+      <h1 style="white-space:normal;">{{ user.rating[0] }}<span style="color:grey">/5</span></h1>
+      <ion-note>{{ user.rating[1] }} valoraciones</ion-note>
+    </ion-item>
+    <ion-item *ngIf="ruta.hour">
+      <p>Comentarios</p> 
+      <div *ngIf="user.comments == 0">Este usuario no tiene comentarios</div>
+      <div class="comment" *ngFor="let comment of user.comments">
+        <h3 padding-bottom style="white-space: normal">{{ comment }}</h3>
+      </div>
+    </ion-item>
+    <button ion-button block margin-top (click)="rateUser()" color="danger">Puntuar usuario</button>
+  </ion-list>
+  <button *ngIf="disponibleIda" ion-button block color="secondary" (click)="unirseRutaIda()">¡Quiero la ida!</button>
+  <button *ngIf="disponibleVuelta" ion-button block color="secondary" (click)="unirseRutaVuelta()">¡Quiero la vuelta!</button>
+</ion-content>

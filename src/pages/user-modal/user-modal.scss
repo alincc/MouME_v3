@@ -1,0 +1,43 @@
+page-user-modal {
+  .ruta{
+    //background-image: url(/img/back_bcn.jpg);
+    background-size: cover;
+  }
+
+  .logo{
+    margin: auto;
+    display: table;
+    width: 50%;
+    max-width: 320px;
+    min-width: 190px;
+  }
+
+  form {
+    margin-bottom: 32px;
+    background-color: rgba(255,255,255,0.8);
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  .item-md{
+    background-color: transparent;
+  }
+
+  button {
+    margin-top: 32px;
+  }
+
+  .comment{
+    // border-top: 1px solid grey;
+  }
+
+  .comment:last-child {
+    // border-bottom: 1px solid grey;
+  }
+
+  .comment h3 {
+    padding-top: 10px;
+    padding-bottom: 0 !important;
+  }
+}

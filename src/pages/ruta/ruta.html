@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button >
+        <ion-icon name="back" (click)="goBack()"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Mi rutina
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="ruta" padding>
+  <form #f="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Punto de salida</ion-label>
+        <ion-input placeholder="De donde sales" id="origin" type="text" name="origin" [(ngModel)]="ruta.origin" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Punto de destino</ion-label>
+        <ion-input placeholder="A donde llegas" id="destination" type="text" name="destination" [(ngModel)]="ruta.destination" required></ion-input>
+      </ion-item>
+      <ion-item class="half-item">
+        <ion-label stacked>Hora de salida</ion-label>
+        <ion-datetime placeholder="Hora a la que sales" type="date" displayFormat="HH:mm" name="hour" [(ngModel)]="ruta.hour" required></ion-datetime>
+      </ion-item>
+      <ion-item class="half-item">
+        <ion-label stacked>Hora de vuelta</ion-label>
+        <ion-datetime placeholder="Hora a la que vuelves" type="date" displayFormat="HH:mm" name="hourBack" [(ngModel)]="ruta.hourBack"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Días que se repite</ion-label>
+        <ion-select [(ngModel)]="ruta.weekDays" multiple="true" name="weekDays" required cancelText="Cancelar" okText="Aceptar" required>
+          <ion-option value="Lunes" checked="true">Lunes</ion-option>
+          <ion-option value="Martes" checked="true">Martes</ion-option>
+          <ion-option value="Miércoles" checked="true">Miércoles</ion-option>
+          <ion-option value="Jueves" checked="true">Jueves</ion-option>
+          <ion-option value="Viernes" checked="true">Viernes</ion-option>
+          <ion-option value="Sábado">Sábado</ion-option>
+          <ion-option value="Domingo">Domingo</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Plazas disponibles</ion-label>
+        <ion-select [(ngModel)]="ruta.spaces" multiple="false" name="spaces" required cancelText="Cancelar" okText="Aceptar" required>
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="5">5</ion-option>
+          <ion-option value="6">6</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+  <button (click)="guardarRuta()" *ngIf="!user.hasRuta" [disabled]="!f.valid" ion-button block>
+    Añadir rutina
+  </button>
+  <button (click)="guardarRuta()" *ngIf="user.hasRuta" [disabled]="!f.valid" ion-button block>
+    Guardar rutina
+  </button>
+  <button color="danger" (click)="eliminarRuta()" *ngIf="user.hasRuta" ion-button block>
+    Eliminar rutina
+  </button>
+
+</ion-content>

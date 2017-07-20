@@ -1,0 +1,32 @@
+ion-app._gmaps_cdv_ .nav-decor{
+  background-color: transparent !important;
+}
+ 
+home-page {
+ 
+    #map {
+        height: 100%;
+    }
+
+    ion-menu[type=overlay] {
+        z-index: 9999;
+    }
+
+    // ion-footer::before {
+    //     display: none;
+    // }
+
+    ion-footer .toolbar-md{
+        min-height: 42px;
+        padding: 0;
+    }
+
+    .casi-full{
+        width: calc(100% - 120px)
+    }
+
+    .alert-md .alert-wrapper, .alert-ios .alert-wrapper {
+        max-width: 90% !important;
+    }
+ 
+}

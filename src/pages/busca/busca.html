@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>
+      Busca una rutina
+    </ion-title>
+    <!--<ion-buttons end>
+      <button ion-button (click)="goToProfile()">
+      <ion-icon style="font-size: 20px" name="person"></ion-icon>
+    </button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="busca">
+  <ion-searchbar margin-top placeholder="Busca una rutina..." (ionInput)="getItems($event)">Busca</ion-searchbar>
+
+
+  <ion-card *ngFor="let ruta of rutas" (click)="openRutaModal(ruta)">
+
+    <ion-card-content no-margin style="padding-bottom: 0">
+      <div>
+        <ion-label no-margin stacked>Origen</ion-label>
+        <h2><b>{{ ruta.origin }}</b></h2>
+        <span item-left>
+          <b ion-text color="danger">{{ ruta.availSpacesIda }}</b> Espacios disponibles
+        </span>
+      </div>
+      <div style="float:right;text-align:right;padding-bottom:16px">
+        <ion-label no-margin stacked>Destino</ion-label>
+        <h2><b>{{ ruta.destination }}</b></h2>
+        <span item-left>
+          <b ion-text color="danger">{{ ruta.availSpacesVuelta }}</b> Espacios disponibles
+        </span>
+      </div>
+    </ion-card-content>
+    <!--<ion-item>
+      <ion-note small clear item-left>
+        Pulsa para más información
+      </ion-note>
+    </ion-item>-->
+    
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,118 @@
+<!--MENU LEFT-->
+<ion-menu [content]="content" id="leftMenu" (ionOpen)="menuOpened()" (ionClose)="menuClosed()">
+  <ion-header color="primary">
+    <ion-toolbar>
+      <ion-title>Menú</ion-title>
+      <ion-buttons right>
+        <button ion-button icon-only (click)="toggleMenu()">
+          <ion-icon name="close" padding-right></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content margin-top>
+    <ion-list>
+      <button menuClose ion-item (click)="pushBuscaPage()">
+        <ion-icon name="search" padding-right></ion-icon>
+        Buscar rutinas
+      </button>
+      <button menuClose ion-item (click)="pushRutaPage()">
+        <ion-icon name="car" padding-right></ion-icon>
+        Mi rutina
+      </button>
+      <button menuClose ion-item (click)="pushToUser()">
+        <ion-icon name="person" padding-right></ion-icon>
+        Mi perfil
+      </button>
+      <button menuClose ion-item (click)="pushTourPage()">
+        <ion-icon name="help-circle" padding-right></ion-icon>
+        Ayuda
+      </button>
+      <button menuClose ion-item (click)="abreAlertAvisoLegal()">
+        <ion-icon name="paper" padding-right></ion-icon>
+        Aviso legal
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!--FILTER RIGHT-->
+<ion-menu [content]="content" side="right" id="rightFilter" (ionOpen)="menuOpened()" (ionClose)="menuClosed()">
+  <ion-header color="primary">
+    <ion-toolbar>
+      <ion-buttons right>
+        <button ion-button icon-only (click)="toggleFilter()">
+          <ion-icon name="close" padding-right></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Filtros</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content margin-top>
+    <ion-list>
+      <ion-item> 
+        <ion-label color="primary">Mi rutina</ion-label>
+        <ion-checkbox color="primary" 
+        [(ngModel)]="filterOptions.miRuta"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label color="danger">Otras rutinas</ion-label>
+        <ion-checkbox color="danger" [(ngModel)]="filterOptions.otrasRutas"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Origen</ion-label>
+        <ion-input type="text" [(ngModel)]="filterOptions.origin"></ion-input>
+      </ion-item>
+      <ion-item margin-left style="width: calc(100% - 32px); padding-left: 0">
+        <ion-label stacked>Destino</ion-label>
+        <ion-input type="text" [(ngModel)]="filterOptions.destination"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button style="margin:16px;width:calc(100% - 32px);" ion-button block color="secondary" 
+    (click)="applyFilter()">
+      Aplicar filtro
+    </button>
+  </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<!--HOME PAGE-->
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="toggleMenu()">
+      <ion-icon name="menu" padding-left></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title text-center>
+      Portada
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="toggleFilter()">
+      <ion-icon style="font-size: 20px" name="options"></ion-icon>
+    </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll="false">
+  <!--<span *ngFor="let ruta of rutas">
+    <button ngFor ion-button block (click)="openRutaModal(ruta)">{{ ruta.origin }}</button>
+  </span>-->
+  <div data-tap-disabled="true" id="map"></div>
+</ion-content>
+
+<!--<ion-footer color="primary">
+  <ion-toolbar>
+    <ion-segment>
+    <ion-segment-button color="secondary" value="kittens">
+      Nothing
+    </ion-segment-button>
+    <ion-segment-button color="secondary" value="puppies" (click)="botonAbreRuta()">
+      Abre ruta secreto
+    </ion-segment-button>
+  </ion-segment>
+  </ion-toolbar>
+</ion-footer>-->

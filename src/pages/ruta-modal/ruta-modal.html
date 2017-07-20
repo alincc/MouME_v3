@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>
+      Unirse a rutina
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancelar</span>
+        <ion-icon name="close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <p>Origen</p>
+      <h2 style="white-space:normal;">{{ ruta.origin }}</h2>
+    </ion-item>
+    <ion-item>
+      <p>Destino</p>
+      <h2 style="white-space:normal;">{{ ruta.destination }}</h2>
+    </ion-item>
+    <ion-item *ngIf="ruta.hour">
+      <div class="half-item">
+        <p>Hora ida</p>
+        <h1 style="white-space:normal;">{{ ruta.hour }}</h1>
+        <h2 class="half-item"><b color="danger" style="font-size: 1.4em">{{ ruta.availSpacesIda }}</b> /{{ ruta.spaces }} plazas</h2>
+      </div>
+      <div class="half-item">
+        <p>Hora vuelta</p>
+        <h1 style="white-space:normal;">{{ ruta.hourBack }}</h1>
+        <h2 class="half-item"><b color="danger" style="font-size: 1.4em">{{ ruta.availSpacesVuelta }}</b> /{{ ruta.spaces }} plazas</h2>
+      </div>
+    </ion-item>
+    <ion-item>
+      <p no-margin stacked>Días</p>
+      <h2 style="float:left; margin-right: 5px" *ngFor="let dias of ruta.weekDays">{{ dias }}</h2>
+    </ion-item>
+    <!--<ion-item>
+      <p no-margin stacked>Espacios disponibles</p>
+      <h2 class="half-item">Ida <b color="danger" style="font-size: 1.6em">{{ ruta.availSpacesIda }}</b> /{{ ruta.spaces }}</h2>
+      <h2 class="half-item">Vuelta <b color="danger" style="font-size: 1.6em">{{ ruta.availSpacesVuelta }}</b> /{{ ruta.spaces }}</h2>
+    </ion-item>-->
+    <button ion-item note-right (click)="openUserModal()">
+      <p no-margin stacked>Usuario</p>
+      <h2 color="danger"><b>{{ ruta.userName }}</b></h2>
+      <ion-note style="color:grey;" item-right> 
+        Ver perfil
+      </ion-note>
+    </button>
+  </ion-list>
+  <button *ngIf="disponibleIda" ion-button block color="secondary" (click)="unirseRutaIda()">¡Quiero la ida!</button>
+  <button *ngIf="disponibleVuelta" ion-button block color="secondary" (click)="unirseRutaVuelta()">¡Quiero la vuelta!</button>
+</ion-content>

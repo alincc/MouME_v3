@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Perfil de usuario
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item (click)="updateName()">
+      <ion-label stacked>
+        Nombre y apellidos
+      </ion-label>
+      <ion-label *ngIf="userProfile.firstName || userProfile.lastName">
+        {{userProfile.firstName}} {{userProfile.lastName}}
+      </ion-label>
+      <button ion-button outline item-right>
+      Editar
+    </button>
+    </ion-item>
+
+    <ion-item (click)="updateUserName()">
+      <ion-label stacked>
+        Nombre de usuario
+      </ion-label>
+      <ion-label *ngIf="userProfile.userName">
+        {{userProfile.userName}}
+      </ion-label>
+      <button ion-button outline item-right>
+      Editar
+    </button>
+    </ion-item>
+
+    <ion-item>
+      <!--(click)="updateEmail()"-->
+      <ion-label stacked>
+        Correo electrónico
+      </ion-label>
+      <ion-label *ngIf="userProfile?.email">
+        {{userProfile.email}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item (click)="updatePassword()">
+      <ion-label>
+        Contraseña
+      </ion-label>
+      <button ion-button outline item-right>
+      Editar
+    </button>
+    </ion-item>
+
+    <ion-item>
+      <!--(click)="updateTokens()"-->
+      <ion-label stacked type="number">
+        Saldo de tu perfil
+      </ion-label>
+      <ion-label style="font-size: 1.4em">
+        {{userProfile.saldo}} €
+      </ion-label>
+    </ion-item>
+    <button block ion-button icon-right margin-top color="secondary" (click)="recargarSaldo()">
+      Recargar mi saldo
+      <ion-icon  name="card"></ion-icon>
+    </button>
+    <button block ion-button icon-right margin-top color="primary" (click)="darmeDeBajaRutas()">
+      Darme de baja de rutinas
+      <ion-icon  name="hand"></ion-icon>
+    </button>
+
+    <button *ngIf="userProfile.hasRuta" margin-top icon-right block ion-button (click)="goToRuta()">
+      Editar mi rutina
+      <ion-icon  name="car"></ion-icon>
+    </button>
+    <!--<button block ion-button block (click)="ponerRutaFalse()">
+      Hack: Poner user ruta false
+    </button>-->
+  </ion-list>
+
+
+
+  <button block ion-button color="danger" margin-top icon-right block ion-button (click)="logMeOut()">
+      Desconexión
+      <ion-icon  name="log-out"></ion-icon>
+    </button>
+
+</ion-content>
